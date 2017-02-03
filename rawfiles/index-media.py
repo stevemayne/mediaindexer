@@ -89,6 +89,9 @@ def generateRSS(outputFile, baseDirectory, baseURL):
           elif extension in ('sub', 'srt'):
               title = ' subtitles'
 
+          if relativePath.startswith('/'):
+            relativePath = relativePath[1:]
+          
           rawlink = os.path.join(rssItemURL, relativePath)
           link = pathname2url(rawlink)
           # write rss item
