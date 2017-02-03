@@ -2,6 +2,7 @@
 import datetime
 import time
 import os
+from urllib import pathname2url 
 
 BASE_DIR = '/media'
 BASE_URL = '${BASE_URL}'
@@ -87,15 +88,17 @@ def generateRSS(outputFile, baseDirectory, baseURL):
               title = ' info'
           elif extension in ('sub', 'srt'):
               title = ' subtitles'
-          
+
+          rawlink = os.path.join(rssItemURL, relativePath)
+          link = pathname2url(rawlink)
           # write rss item
           outputFile.write("<item>\n")
           outputFile.write("<title>" + '.'.join(fileNameBits[:-1]).replace("_", " ") + title + "</title>\n")
           outputFile.write("<description>A description</description>\n")
-          outputFile.write("<link>" + rssItemURL + relativePath + "</link>\n")
-          outputFile.write("<guid>" + rssItemURL + relativePath + "</guid>\n")
+          outputFile.write("<link>" + link + "</link>\n")
+          outputFile.write("<guid>" + rawlink + "</guid>\n")
           outputFile.write("<pubDate>" + formatDate(datetime.datetime.fromtimestamp(fileStat[ST_MTIME])) + "</pubDate>\n")
-          outputFile.write("<enclosure url=\"" + rssItemURL + relativePath + "\" length=\"" + str(fileStat[ST_SIZE]) + "\" type=\"" + itemType + "\" />\n")
+          outputFile.write("<enclosure url=\"" + link + "\" length=\"" + str(fileStat[ST_SIZE]) + "\" type=\"" + itemType + "\" />\n")
           outputFile.write("</item>\n")
 
   # write rss footer
