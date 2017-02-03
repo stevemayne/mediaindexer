@@ -3,7 +3,6 @@ import datetime
 import time
 import os
 
-SUB_DIRS = ['tv', 'movies']
 BASE_DIR = '/media'
 BASE_URL = '${BASE_URL}'
 INDEX_FILENAME = 'index.xml'
@@ -104,10 +103,8 @@ def generateRSS(outputFile, baseDirectory, baseURL):
   outputFile.write("</rss>")
 
 if __name__ == '__main__':
-  for subdir in SUB_DIRS:
-    directory = os.path.join(BASE_DIR, subdir)
-    url = os.path.join(BASE_URL, subdir)
-    outputFilename = os.path.join(directory, INDEX_FILENAME)
-    with open(outputFilename, "w") as outputFile:
-      generateRSS(outputFile, directory, url)
-    print "Completed %s" % outputFilename
+  url = os.path.join(BASE_URL, subdir)
+  outputFilename = os.path.join(BASE_DIR, INDEX_FILENAME)
+  with open(outputFilename, "w") as outputFile:
+    generateRSS(outputFile, BASE_DIR, url)
+  print "Completed %s" % outputFilename
