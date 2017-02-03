@@ -103,8 +103,7 @@ def generateRSS(outputFile, baseDirectory, baseURL):
   outputFile.write("</rss>")
 
 if __name__ == '__main__':
-  url = os.path.join(BASE_URL, subdir)
   outputFilename = os.path.join(BASE_DIR, INDEX_FILENAME)
   with open(outputFilename, "w") as outputFile:
-    generateRSS(outputFile, BASE_DIR, url)
+    generateRSS(outputFile, BASE_DIR, BASE_URL)
   print "Completed %s" % outputFilename
