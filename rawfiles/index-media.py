@@ -16,7 +16,8 @@ MIME_TYPES = {
               'sub':'image/vnd.dvb.subtitle',
               'mkv':'video/x-matroska',
               'nfo':'text/plain',
-              'srt':'text/plain'
+              'srt':'text/plain',
+              'iso':'application/octet-stream'
               }
 
 # import constants from stat library
