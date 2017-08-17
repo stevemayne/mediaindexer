@@ -17,7 +17,8 @@ MIME_TYPES = {
               'mkv':'video/x-matroska',
               'nfo':'text/plain',
               'srt':'text/plain',
-              'iso':'application/octet-stream'
+              'iso':'application/octet-stream',
+              'flv':'video/x-flv'
               }
 
 # import constants from stat library
